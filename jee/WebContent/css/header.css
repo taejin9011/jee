@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-@IMPORT url("../common/common.css");
+@IMPORT url("common.css");
 img{border: none}
 #wrap{     /*   .이 클래스를 의미하듯이 #은 id를 뜻한다.  */
 	width: 99%;

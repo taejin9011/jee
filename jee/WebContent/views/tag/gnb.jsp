@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Document</title>
-	<style>@IMPORT url("gnb.css");</style>
+	<style>@IMPORT url("<%=request.getContextPath()%>/css/gnb.css");</style>
 </head>
 <body>
 	<header>

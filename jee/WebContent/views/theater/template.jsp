@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>극장관리</title>
 <style>
-	@IMPORT url("template.css");
+	@IMPORT url("<%=request.getContextPath()%>/css/template.css");
 </style>
 </head>
 <body>

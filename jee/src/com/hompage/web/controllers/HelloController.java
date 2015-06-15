@@ -28,7 +28,7 @@ public class HelloController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet은 페이지 이동할 때 사용
-				
+		System.out.println("경로 :"+request.getServletPath());
 		switch (request.getServletPath()) {
 		case "/name/hello.nhn":goHello(request,response); break;
 		case "/hi.do":goHi(request,response); break;
@@ -51,7 +51,7 @@ public class HelloController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		HelloService service = new HelloServiceImpl();
 		String msg = service.greet();
-		System.out.println("msg"+msg);
+		System.out.println("msg :"+msg);
 		String name = request.getParameter("name");
 		request.setAttribute("name", msg+name);
 

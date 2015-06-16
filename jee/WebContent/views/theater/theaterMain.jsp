@@ -12,7 +12,9 @@
 <body>
 	<div class="box">
 		<ul class="mainMenu">
-			<li class="actice" >시간표</li>
+			<li class="actice" >
+				<a href="timeTable.jsp">시간표</a>
+			</li>
 			<li >상영관정보</li>
 			<li>상영예정</li>
 			<li>영화관정보</li>

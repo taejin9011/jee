@@ -8,10 +8,19 @@
 	<style>
 		@IMPORT url("../../css/model2/kaup.css");
 	</style>
+	<script type="text/javascript">
+	function join(){
+		document.frmJoin.submit();
+	}
+	
+	function login(){
+			document.frmLogin.submit();
+		}	
+	</script>
 </head>
 <body>
 	
-	<form action="<%=request.getContextPath()%>/model2/join.do" method="post">  <!-- 개인정보이기 때문에 메소드를 post로 바꿈 -->
+	<form action="<%=request.getContextPath()%>/model2/join.do" method="post" name="frmJoin">  <!-- 개인정보이기 때문에 메소드를 post로 바꿈 -->
 	<fieldset>
 		<legend>회원 가입</legend>
 		<table>
@@ -39,14 +48,15 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit"  value="회원가입"/>
+					<!-- <input type="submit"  value="회원가입"/> -->
+					<img src="<%=request.getContextPath()%>/images/btnJoin.gif" style="cursor: pointer" alt="" onclick="return join()"/>
 				</td>
 			</tr>
 		</table>
 		</fieldset>
 	</form>
 	
-	<form action="<%=request.getContextPath()%>/model2/login.do" method="post">
+	<form action="<%=request.getContextPath()%>/model2/login.do" method="post" name="frmLogin">
 	<fieldset>
 		<legend>로그인</legend>
 		<table>
@@ -62,7 +72,9 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit"  value="로그인"/>
+					<!-- <input type="submit"  value="로그인"/> -->
+					<img src="<%=request.getContextPath()%>/images/btnLogin.gif" style="cursor: pointer" alt="" onclick="return login()"/>
+					
 				</td>
 			</tr>
 		</table>

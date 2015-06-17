@@ -67,9 +67,7 @@ public class ReservationServiceImpl implements ReservationService {
 					id = seat[floor][row]; // 방에 이름이 있다면 해당 배열주소
 															// null처리
 					seat[floor][row] = null;
-
-					System.out.println(id + "님 checkOut 완료 되셨습니다");
-
+					msg = id + "님 checkOut 완료 되셨습니다";
 				}
 			} catch (Exception ex) {
 				System.out.println("ReservationServiceImpl.checkIn( ) 에서 에러 발생");

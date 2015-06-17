@@ -4,11 +4,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>가상 예약 페이지</title>
+	<title>비밀번호 찾기 폼</title>
 </head>
 <body>
-	<%=request.getAttribute("title") %>
-	<%=request.getAttribute("theater") %>
-	<%=request.getAttribute("time") %>
+	비밀번호 찾기 폼
 </body>
 </html>

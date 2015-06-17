@@ -20,6 +20,9 @@
 			<li>영화관정보</li>
 			<li>오시는길</li>
 		</ul>
-	</div>
+	</div><br />
+	<img src="<%=request.getContextPath()%>/images/theater/imsi.PNG" alt="" />
+	
+	
 </body>
 </html>

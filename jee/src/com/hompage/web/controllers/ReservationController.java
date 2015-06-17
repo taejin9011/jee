@@ -1,9 +1,6 @@
 package com.hompage.web.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,11 +31,12 @@ public class ReservationController extends HttpServlet {
 		int row = Integer.parseInt(request.getParameter("row"))-1;
 		String id = request.getParameter("id");
 		String path = request.getServletPath();
-		seat[floor][row] = id;  // 좌석 위치값
+		
 				
 		switch (path) {
 		case "/reservation/checkIn.do":
 			String msg= service.checkIn(floor, row, id);
+			seat[floor][row] = id;  // 좌석 위치값
 			request.setAttribute("msg", msg);
 			request.setAttribute("seat", seat);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/ReservationForm.jsp");
@@ -46,14 +44,16 @@ public class ReservationController extends HttpServlet {
 			break; // 체크인
 		case "/reservation/checkOut.do":
 			String msg2= service.checkOut(floor, row, id);
-			RequestDispatcher dispatcher2 = request.getRequestDispatcher("");
+			seat[floor][row] = null;  // 좌석 위치값
+			request.setAttribute("msg", msg2);
+			request.setAttribute("seat", seat);
+			RequestDispatcher dispatcher2 = request.getRequestDispatcher("/views/model2/ReservationForm.jsp");
 			dispatcher2.forward(request, response);
 			break; // 체크아웃
 		/*case "/reservation/inputCheck.do":
 			service.process();
 			break; // 현황보기      이건 태그에서 입력 받기 때문에 필요없다. */	
 		case "/reservation/showStatus.do":
-			String[][] seat = service.showStatus();
 			request.setAttribute("floor", floor);
 			request.setAttribute("row", row);
 			RequestDispatcher dispatcher3 = request.getRequestDispatcher("");

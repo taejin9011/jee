@@ -20,7 +20,8 @@ import com.homepage.web.services.MemberService;
  * @ Author : JTJ
  * @ Story : 회원가입과 로그인 담당하는 콘트롤러
  */
-@WebServlet({"/model2/join.do","/model2/login.do"})
+@WebServlet({"/model2/join.do","/model2/login.do",
+		"/member/searchIdForm.do", "/member/searchPassForm.do"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,14 +29,31 @@ public class MemberController extends HttpServlet {
 	MemberService service = new MemberServiceImpl();
     MemberBean bean = new MemberBean();
     
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
+    	String path = request.getServletPath();
+    	switch (path){
+    		case "/member/searchIdForm.do":
+    			RequestDispatcher dispatcher2 = request.getRequestDispatcher("/views/model2/searchIdForm.jsp");
+    			dispatcher2.forward(request, response);
+    			break;
+    		case "/member/searchPassForm.do":
+    			RequestDispatcher dispatcher3 = request.getRequestDispatcher("/views/model2/searchPassForm.jsp");
+    			dispatcher3.forward(request, response);
+    			break;
+    		default: 	break;
+    	}
+    }
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		switch (request.getServletPath()) {
 		case "/model2/join.do":		goJoin(request, response);		break;
 		case "/model2/login.do":	goLogin(request, response);	break;
 		default: 	break;
-		}
 	}
+}
 	
 	private void goJoin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -67,6 +85,7 @@ public class MemberController extends HttpServlet {
 		if(msg.equals("환영합니다.")){
 			request.setAttribute("name", bean.getName());
 			request.setAttribute("id", bean.getId());
+			request.setAttribute("password", bean.getPassword());
 			request.setAttribute("age", bean.getAge());
 			request.setAttribute("address", bean.getAddr());
 			
@@ -76,7 +95,7 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("msg", msg);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/loginFail.jsp");
 			dispatcher.forward(request, response);
+	
 		}
-		
 	}
 }

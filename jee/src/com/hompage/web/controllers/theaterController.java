@@ -9,30 +9,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class theaterController
- */
+import com.homepage.web.serviceimpls.HelloServiceImpl;
+import com.homepage.web.services.HelloService;
 
+/**
+* Servlet implementation class theaterController
+*/
 @WebServlet("/theater.do")
 public class theaterController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-  	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String age= request.getParameter("age");
-		request.setAttribute("age", age);
-  		
-		/*나이 : <%=request.getAttribute("age") %> <br />
-		상영관 : <%=request.getAttribute("theater") %> <br />
-		좌석수 : <%=request.getAttribute("seat") %> <br />
-		영화제목 : <%=request.getAttribute("title") %> <br />
-		상영날짜 : <%=request.getAttribute("date") %> <br />
-		상영시간 :  <%=request.getAttribute("time") %> <br />
-		영화가격 :  <%=request.getAttribute("price") %> <br />
-		포스터 : <%=request.getAttribute("poster") %> <br />
-		현재상영장 : <%=request.getAttribute("nowFilm") %> */
-		
-  		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/theater/theaterMain.jsp");
-  		dispatcher.forward(request, response);
-	}
+     private static final long serialVersionUID = 1L;
+      
+     /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+          if(request.getServletPath().equalsIgnoreCase("/theater.do")){
+          goTheater(request, response);
+          }else{
+               System.out.println("페이지 없음");
+          }
+     }
+    
+    
+     private void goTheater(HttpServletRequest request,
+               HttpServletResponse response) throws ServletException, IOException {
+         
+          String[] property = {"age","theater","seat","title","date","time","price","poster","nowFilm"};
+          for(int i=0 ; i<property.length; i++){
+               String value = request.getParameter(property[i]);
+               request.setAttribute(property[i], value);
+          }         
+
+          RequestDispatcher dispatcher = request.getRequestDispatcher("/views/theater/inputPage.jsp");  // 절대경로
+          dispatcher.forward(request, response);
+     }
 }

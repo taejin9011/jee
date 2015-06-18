@@ -8,17 +8,20 @@
 	<style>
 		@IMPORT url("<%=request.getContextPath()%>/css/menu.css");
 	</style>
+	
 </head>
 <body>
 	<div class="box">
 		<ul class="mainMenu">
-			<li class="actice" >
-				<a href="timeTable.jsp">시간표</a>
+			<li class="active" >
+				<a href="#">상영관정보</a>
 			</li>
-			<li >상영관정보</li>
+			<li><a href="timeTable.jsp">시간표</a></li>
 			<li>상영예정</li>
 			<li>영화관정보</li>
-			<li>오시는길</li>
+			<li>
+				<a href="map.jsp">오시는길</a>
+			</li>
 		</ul>
 	</div><br />
 	<img src="<%=request.getContextPath()%>/images/theater/imsi.PNG" alt="" />

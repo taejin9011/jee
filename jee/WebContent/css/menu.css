@@ -29,8 +29,8 @@ ul.mainMenu li{
 	margin: auto;
 	float: left;
 	border: 1px solid BLACK;
-	border-top-left-radius : 10;    /* radius는 곡선을 줌 */
-	border-top-right-radius : 10;   
+	border-top-left-radius : 10px;    /* radius는 곡선을 줌 */
+	border-top-right-radius : 10px;   
 	background-color: #CCC; 
 }
 ul.mainMenu li.active{

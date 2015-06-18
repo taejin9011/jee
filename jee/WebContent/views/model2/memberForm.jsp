@@ -8,26 +8,7 @@
 	<style>
 		@IMPORT url("../../css/model2/kaup.css");
 	</style>
-	<script type="text/javascript">
-	function searchId(){    /* 팝업창  searchid,pass */
-		window.open("<%=request.getContextPath()%>/member/searchIdForm.do",
-				"searchId",
-				"scrollbars,toolbar=no,location=no,directories=no,status=no,menu=yes,resizable=yes,width=600,height=400,top=200,left=400");
-	}
-	function searchPass() {
-		window.open("<%=request.getContextPath()%>/member/searchPassForm.do",
-				"searchPass",
-				"scrollbars,toolbar=no,location=no,directories=no,status=no,menu=yes,resizable=yes,width=600,height=400,top=200,left=400");
-	}
 	
-	function join(){
-		document.frmJoin.submit();
-	}
-	
-	function login(){
-			document.frmLogin.submit();
-		}	
-	</script>
 </head>
 <body>
 	
@@ -94,12 +75,12 @@
 	
 	<div>
 		<span>
-			<a href="#" onclick="searchId()">아이디 찾기</a>
+			<a href="#" onclick="searchId('<%=request.getContextPath()%>/member/searchIdForm.do')">아이디 찾기</a> <!-- java스크립트 사용할 때에는 ' 으로 준다. -->
 		</span>
 		<span>
-			<a href="#" onclick="searchPass()">비밀번호 찾기</a>
+			<a href="#" onclick="searchPass('<%=request.getContextPath()%>/member/searchPassForm.do')">비밀번호 찾기</a>
 		</span>
 	</div>
-	
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script>
 </body>
 </html>

@@ -13,10 +13,8 @@ table {
 }
 .tableTag thead tr th{
 	border: 1px solid GRAY;
-	height: 50px
-	margin: auto
+	height: 50px;
 }
 .tableTag tbody tr td{
-	border: 1px solid GRAY
-	margin: auto
+	border: 1px solid GRAY;
 }

@@ -13,7 +13,7 @@
 <body>
 
 <div>
-<form action="<%=request.getContextPath()%>/theater.do">
+<form action="<%=request.getContextPath()%>/theaterInput.do">
 
      <table class="tableClass">
           <tr class="trClass">

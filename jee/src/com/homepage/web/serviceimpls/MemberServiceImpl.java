@@ -11,32 +11,25 @@ import com.homepage.web.services.MemberService;
 public class MemberServiceImpl implements MemberService{
 
 	/*
-	 * 회원가입 기능을 하는 메소드
-	 * HashMap 을 해야 id 값을 가지고 password 를 호출하겠구나..
-	 * */
+	 * DAO 가 싱글톤 패턴으로 단 하나의 인스턴스만 리턴한다면
+	 * 그것을 사용하는 서비스도 싱글톤으로 구성해야 한다.
+	 * 그러지 않으면 다중 접속 상태에서 하나의 인스턴스만 사용하게 되어
+	 * 접속불량 현상이 발생한다. 
+	 */
+	
+	private static MemberService service = new MemberServiceImpl();
+	private MemberServiceImpl() {}
+	public static MemberServiceImpl getInstance(){
+		return (MemberServiceImpl) service;
+	}
+	
 	MemberBean bean = new MemberBean();
 	Map<String,Object> map = new HashMap<String,Object>();
 	
 	@Override
-	public void join(String id, String password, String name, String age,
-			String addr, String emailParam) {
-		/*
-		 * 이 패턴은 DB 에 저장하는 패턴과 일치한다. 
-		 * 즉, 값을 활용하면서 오염되거나 변질될 수 있기에
-		 * 가장 먼저 순수값을 DB 에 저장하고 본다.
-		 * */
-		bean.setAddr(addr);
-		bean.setAge(age);
-		bean.setId(id);
-		bean.setName(name);
-		bean.setPassword(password);
-		
-		map.put("id", bean.getId());
-		map.put("password", bean.getPassword());
-		map.put("name", bean.getName());
-		map.put("age", String.valueOf(bean.getAge()));
-		map.put("address", bean.getAddr());
-		
+	public int join(MemberBean bean){
+	
+		return MemberDAO.getInstance().join(bean);
 	}
 	
 	

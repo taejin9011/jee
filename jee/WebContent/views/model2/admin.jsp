@@ -24,6 +24,7 @@
 			<tr>
 				<td>이름으로 회원검색(동명이인 허용)</td>
 				<td><input type="text" id="password" name="password" /></td>
+				
 			</tr>
 			<tr>
 				<td>회원삭제</td>

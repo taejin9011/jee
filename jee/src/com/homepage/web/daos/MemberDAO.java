@@ -75,5 +75,26 @@ public class MemberDAO {
 			}
 		}
 		return list;
+	}
+	public int join(MemberBean bean) {
+		int result = 0;
+		sql = "insert into member (MEMBERID, PASSWORD, NAME, EMAIL, AGE)" 
+				 +"values (?,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,bean.getId());
+			pstmt.setString(2,bean.getPassword());
+			pstmt.setString(3,bean.getName());
+			pstmt.setString(4,bean.getEmail());
+			pstmt.setString(5,bean.getAge());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("memberDAO-join() 에서 에러발생");
+		}
+		
+		return result;
 	}	
 }

@@ -30,8 +30,8 @@ public class MemberController extends HttpServlet {
      private static final long serialVersionUID = 1L;
      MemberBean bean = new MemberBean();
      Map<String, Object> map = new HashMap<String, Object>();
-     MemberService service = new MemberServiceImpl();
-
+     MemberService service = MemberServiceImpl.getInstance();
+    		 
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
                throws ServletException, IOException {
           request.setCharacterEncoding("UTF-8");
@@ -78,11 +78,18 @@ public class MemberController extends HttpServlet {
           bean.setAddr(addressParam);
           bean.setEmail(emailParam);
          
+          int result = service.join(bean);
+          String joinmsg = "";
+          if(result != 0){
+        	  joinmsg = nameParam + "님 환영합니다.";
+          }else{
+        	  joinmsg= "회원가입에 실패했습니다.";
+          }
+         request.setAttribute("msg", joinmsg);
          
+          service.join(bean);
          
-          service.join(idParam, passParam, nameParam, ageParam, addressParam, emailParam);
-         
-          RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/memberForm.jsp");
+          RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/main.jsp");
           dispatcher.forward(request, response); // 멤버폼에 가서 다시 회원가입 로그인 화면.
          
      }

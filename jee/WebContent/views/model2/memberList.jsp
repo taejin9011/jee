@@ -19,12 +19,12 @@
 			<td style="width: 10%">나이</td>
 			<td style="width: 40%">이메일</td>
 		</tr>
-		<c:forEach var="member" items="${memberList}" varStatus="status">
+		<c:forEach var="bean" items="${memberList}" varStatus="status">
 			<tr style="align:center; border: 1px solid; block;">
-				<td>${member.id}</td>
-				<td>${member.name}</td>
-				<td>${member.age}</td>
-				<td>${member.email}</td>
+				<td>${bean.id}</td>
+				<td>${bean.name}</td>
+				<td>${bean.age}</td>
+				<td>${bean.email}</td>
 			</tr>
 		</c:forEach>
 	</table>

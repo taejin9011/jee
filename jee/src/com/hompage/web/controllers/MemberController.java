@@ -1,7 +1,9 @@
 package com.hompage.web.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -21,7 +23,8 @@ import com.homepage.web.services.MemberService;
  * @ Story : 회원가입과 로그인 담당하는 콘트롤러
  */
 @WebServlet({"/model2/join.do","/model2/login.do",
-		"/member/searchIdForm.do", "/member/searchPassForm.do"})
+		"/member/searchIdForm.do", "/member/searchPassForm.do",
+		"/member/searchAllMembers.do"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,6 +44,14 @@ public class MemberController extends HttpServlet {
     		case "/member/searchPassForm.do":
     			RequestDispatcher dispatcher3 = request.getRequestDispatcher("/views/model2/searchPassForm.jsp");
     			dispatcher3.forward(request, response);
+    			break;
+    		case "/member/searchAllMembers.do":
+    			List<MemberBean> list = new ArrayList<MemberBean>();
+    			list = service.getList();
+    			request.setAttribute("memberList", list);
+    			RequestDispatcher dispatcher5 = request.getRequestDispatcher("/views/model2/searchPassForm.jsp");
+    			dispatcher5.forward(request, response);
+    			
     			break;
     		default: 	break;
     	}
@@ -63,15 +74,14 @@ public class MemberController extends HttpServlet {
 		String password = request.getParameter("password");
 		String ageParam = request.getParameter("age");
 		String address = request.getParameter("address");
-		int age= Integer.parseInt(ageParam);
 		
 		bean.setName(name);
 		bean.setId(id);
 		bean.setPassword(password);
-		bean.setAge(age);
+		bean.setAge(ageParam);
 		bean.setAddr(address);
 		
-		service.join(id, password, name, age, address);
+		service.join(id, password, name, ageParam, address);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/memberForm.jsp"); 
 		dispatcher.forward(request, response);

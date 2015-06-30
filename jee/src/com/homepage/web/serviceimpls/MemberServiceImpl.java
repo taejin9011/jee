@@ -1,10 +1,11 @@
 package com.homepage.web.serviceimpls;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-
 import com.homepage.web.beans.MemberBean;
+import com.homepage.web.daos.MemberDAO;
 import com.homepage.web.services.MemberService;
 
 public class MemberServiceImpl implements MemberService{
@@ -17,7 +18,7 @@ public class MemberServiceImpl implements MemberService{
 	Map<String,Object> map = new HashMap<String,Object>();
 	
 	@Override
-	public void join(String id, String password, String name, int age, String address) {
+	public void join(String id, String password, String name, String age, String address) {
 		/*
 		 * 이 패턴은 DB 에 저장하는 패턴과 일치한다.
 		 * 즉, 값을 활용하면서 오염되거나 변질될 수 있기에
@@ -47,5 +48,10 @@ public class MemberServiceImpl implements MemberService{
 		}else{
 			return msg = "비번이 다릅니다.다시 입력하세요.";
 		}
+	}
+	@Override
+	public List<MemberBean> getList() {
+		MemberDAO dao = MemberDAO.getInstance();
+		return dao.getList();
 	}
 }

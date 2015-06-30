@@ -3,9 +3,25 @@ package com.homepage.web.beans;
 public class MemberBean {
 	private String name;
 	private String address;
-	private int age;
+	private String age;
 	private String id;
 	private String password;
+	private String email;
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	
 	public String getName() {
 		return name;
@@ -19,10 +35,10 @@ public class MemberBean {
 	public void setAddr(String address) {
 		this.address = address;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public String getId() {

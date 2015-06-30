@@ -51,7 +51,7 @@ public class MemberDAO {
 	public List<MemberBean> getList(){
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		try {
-			stmt = conn.createStatement();
+			stmt = conn.createStatement(); 
 			sql = "select * from member";
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {

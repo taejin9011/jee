@@ -14,20 +14,20 @@
 			<tr>
 				<td>전체회원 목록보기</td>
 				<td>
-					<!-- <input type="text" id="name" name="name" placeholder="이름을 입력하세요" /> -->
+					<input type="text" id="name" name="name" placeholder="이름을 입력하세요" />
 				</td>
 			</tr>
 			<tr>
 				<td>ID로 회원검색</td>
-				<!-- <td><input type="text" id="id" name="id" placeholder="ID 값을 입력하세요" /></td> -->
+				<td><input type="text" id="id" name="id" placeholder="ID 값을 입력하세요" /></td>
 			</tr>
 			<tr>
 				<td>이름으로 회원검색(동명이인 허용)</td>
-				<!-- <td><input type="text" id="password" name="password" /></td> -->
+				<td><input type="text" id="password" name="password" /></td>
 			</tr>
 			<tr>
 				<td>회원삭제</td>
-				<!-- <td><input type="text" id="password" name="password" /></td> -->
+				<td><input type="text" id="password" name="password" /></td>
 			</tr>
 			<tr>
 				<td colspan="2">

@@ -18,13 +18,14 @@ public class MemberServiceImpl implements MemberService{
 	Map<String,Object> map = new HashMap<String,Object>();
 	
 	@Override
-	public void join(String id, String password, String name, String age, String address) {
+	public void join(String id, String password, String name, String age,
+			String addr, String emailParam) {
 		/*
-		 * 이 패턴은 DB 에 저장하는 패턴과 일치한다.
+		 * 이 패턴은 DB 에 저장하는 패턴과 일치한다. 
 		 * 즉, 값을 활용하면서 오염되거나 변질될 수 있기에
 		 * 가장 먼저 순수값을 DB 에 저장하고 본다.
 		 * */
-		bean.setAddr(address);
+		bean.setAddr(addr);
 		bean.setAge(age);
 		bean.setId(id);
 		bean.setName(name);
@@ -35,7 +36,10 @@ public class MemberServiceImpl implements MemberService{
 		map.put("name", bean.getName());
 		map.put("age", String.valueOf(bean.getAge()));
 		map.put("address", bean.getAddr());
+		
 	}
+	
+	
 	@Override
 	public String login(String id, String password) {
 		String msg = "";
@@ -54,4 +58,6 @@ public class MemberServiceImpl implements MemberService{
 		MemberDAO dao = MemberDAO.getInstance();
 		return dao.getList();
 	}
+	
+
 }

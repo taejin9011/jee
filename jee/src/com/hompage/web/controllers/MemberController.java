@@ -87,8 +87,6 @@ public class MemberController extends HttpServlet {
           }
          request.setAttribute("msg", joinmsg);
          
-          service.join(bean);
-         
           RequestDispatcher dispatcher = request.getRequestDispatcher("/views/model2/main.jsp");
           dispatcher.forward(request, response); // 멤버폼에 가서 다시 회원가입 로그인 화면.
          

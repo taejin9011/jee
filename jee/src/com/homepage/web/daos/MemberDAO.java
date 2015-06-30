@@ -21,7 +21,6 @@ public class MemberDAO {
 	ResultSet rs  = null;
 	PreparedStatement pstmt = null;
 	String sql = "";
-	MemberBean bean = new MemberBean();
 	/*
 	 * 지금 보시는 내용이 싱글톤 + DBCP 정석입니다.
 	 * 다만, 이것만 해서는 단위별 서버 실행에서
@@ -55,6 +54,7 @@ public class MemberDAO {
 			sql = "select * from member";
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
+				MemberBean bean = new MemberBean();
 				bean.setId(rs.getString("MEMBERID"));
 				bean.setPassword(rs.getString("PASSWORD"));
 				bean.setName(rs.getString("NAME"));

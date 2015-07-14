@@ -19,8 +19,6 @@
 				<a href="theaterMain.jsp">상영관정보</a>				
 			</li>
 			<li class="active"  ><a href="#">시간표</a></li>
-			<li>상영예정</li>
-			<li>영화관정보</li>
 			<li>
 				<a href="map.jsp">오시는길</a>
 			</li>
